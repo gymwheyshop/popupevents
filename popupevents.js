@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const popupContainer = document.getElementById('popup-container');
+    const popupContent = document.getElementById('popup-content');
     const closePopup = document.getElementById('close-popup');
 
     // Check if the popup should be shown today
@@ -15,5 +16,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close the popup when the close button is clicked
     closePopup.addEventListener('click', function () {
         popupContainer.classList.add('hidden');
+    });
+
+    // Close the popup when clicking outside of it
+    window.addEventListener('click', function (event) {
+        if (event.target === popupContainer) {
+            popupContainer.classList.add('hidden');
+        }
+    });
+
+    // Prevent clicks inside the popup from closing it
+    popupContent.addEventListener('click', function (event) {
+        event.stopPropagation();
     });
 });
