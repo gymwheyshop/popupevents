@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Show the popup if it hasn't been shown today
         popupContainer.classList.remove('hidden');
         localStorage.setItem('lastPopupDate', today);
+
+        // Automatically close the popup after 3 seconds (adjust as needed)
+        setTimeout(function () {
+            popupContainer.classList.add('hidden');
+        }, 3000);
     }
 
     // Close the popup when the close button is clicked
